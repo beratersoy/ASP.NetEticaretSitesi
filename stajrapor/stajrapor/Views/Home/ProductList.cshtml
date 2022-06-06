@@ -1,0 +1,90 @@
+﻿@using stajrapor.Entity
+@model IEnumerable<Product>
+@{
+    ViewBag.Title = "ProductList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div id="sidebar" class="span3">
+        <div class="well well-small">
+            <ul class="nav nav-list">
+                @Html.Action("_CategoryList", "Categories")
+                <li style="border:0"> &nbsp;</li>
+                @Html.Action("Sumary", "Cart")
+            </ul>
+        </div>
+
+       
+        <ul class="nav nav-list promowrapper">
+            <li>
+                <div class="thumbnail">
+                    <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+                    <img src="/site/assets/img/bootstrap-ecommerce-templates.png" alt="bootstrap ecommerce templates">
+                    <div class="caption">
+                        <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
+                    </div>
+                </div>
+            </li>
+            <li style="border:0"> &nbsp;</li>
+            <li>
+                <div class="thumbnail">
+                    <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+                    <img src="/site/assets/img/shopping-cart-template.png" alt="shopping cart template">
+                    <div class="caption">
+                        <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
+                    </div>
+                </div>
+            </li>
+            <li style="border:0"> &nbsp;</li>
+            <li>
+                <div class="thumbnail">
+                    <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+                    <img src="/site/assets/img/bootstrap-template.png" alt="bootstrap template">
+                    <div class="caption">
+                        <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+    <div class="span9">
+        <!--
+        New Products
+        -->
+
+        <h3>Our Products </h3>
+
+        <ul class="thumbnails">
+            @foreach (var item in Model)
+            {
+                <li class="span3">
+                    <div class="thumbnail">
+
+                        <a href="/Home/ProductDetails/@item.Id">
+                            <img src="~/Content/image/@item.Image" alt="" style="max-width:207px; max-height:206px; min-height:267px;">
+                        </a>
+                        <div class="caption cntr">
+                            <p>@item.Name</p>
+                            <p><strong>@item.price ₺</strong></p>
+                            <h4><a class="shopBtn" href="/Home/ProductDetails/@item.Id" title="add to cart"> Görüntüle </a></h4>
+                            <div class="actionList">
+                                <a class="pull-left" href="#">Add to Wish List </a>
+                                <a class="pull-left" href="#"> Add to Compare </a>
+                            </div>
+                            <br class="clr">
+                        </div>
+                    </div>
+                </li>
+            }
+
+
+        </ul>
+
+
+
+
+    </div>
+</div>
+

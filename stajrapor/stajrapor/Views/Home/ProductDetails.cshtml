@@ -1,0 +1,98 @@
+﻿@using stajrapor.Entity
+@model Product
+<div class="row">
+    <div id="sidebar" class="span3">
+        <div class="well well-small">
+            <ul class="nav nav-list">
+                @Html.Action("_CategoryList", "Categories")
+                <li style="border:0"> &nbsp;</li>
+                @Html.Action("Sumary", "Cart")
+            </ul>
+        </div>
+
+
+        <ul class="nav nav-list promowrapper">
+            <li>
+                <div class="thumbnail">
+                    <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+                    <img src="/site/assets/img/bootstrap-ecommerce-templates.png" alt="bootstrap ecommerce templates">
+                    <div class="caption">
+                        <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
+                    </div>
+                </div>
+            </li>
+            <li style="border:0"> &nbsp;</li>
+            <li>
+                <div class="thumbnail">
+                    <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+                    <img src="assets/img/shopping-cart-template.png" alt="shopping cart template">
+                    <div class="caption">
+                        <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
+                    </div>
+                </div>
+            </li>
+            <li style="border:0"> &nbsp;</li>
+            <li>
+                <div class="thumbnail">
+                    <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+                    <img src="assets/img/bootstrap-template.png" alt="bootstrap template">
+                    <div class="caption">
+                        <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+    <div class="span9">
+        <ul class="breadcrumb">
+            <li><a href="/Home/Index">Ana Sayfa</a> <span class="divider">/</span></li>
+            <li><a href="/Home/Product">Ürünler</a> <span class="divider">/</span></li>
+            <li class="active">Ürün Detay</li>
+        </ul>
+        <div class="well well-small">
+            <div class="row-fluid">
+                <div class="span5">
+                    <div id="myCarousel" class="carousel slide cntr">
+
+                        <div class="item active">
+                            <a href="#"> <img src="~/Content/image/@Model.Image" alt="" style="width:100%"></a>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+                <div class="span7">
+                    <h3>@Model.Name</h3>
+                    <hr class="soft">
+                    @using (Html.BeginForm("AddToCart", "Cart", new { @class = "form-horizontal qtyFrm" }))
+                    {
+                        @Html.HiddenFor(i=>i.Id)
+                            <div class="control-group">
+                                <label class="control-label"><span>@Model.price ₺</span></label>
+
+                            </div>
+
+
+
+                            <h4>@Model.Stock</h4>
+                            <p>
+                                @Model.Description
+                            </p><p>
+                                <button type="submit" class="shopBtn"><span class=" icon-shopping-cart"></span> Sepete Ekle</button>
+                            </p>
+                        
+                    }
+                </div>
+            </div>
+            <hr class="softn clr">
+
+
+
+
+
+        </div>
+    </div>
+</div>
